@@ -46,9 +46,13 @@ export default{
             };
             reader.readAsDataURL(file);
         },
-        
-
-    }
-}
-    
+        exportImage() {
+            const dataURL = this.canvas.toDataURL("image/png");
+            const link = document.createElement('a');
+            linkdownload = "image.png";
+            link.href = dataURL;
+            link.click();
+        },
+    },
+};  
 </script>
