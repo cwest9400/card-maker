@@ -8,6 +8,8 @@
 </template>
 
 <script>
+import { read } from 'fs';
+
 export default{
     Data() {
         return {
@@ -32,7 +34,20 @@ export default{
             };
             reader.readAsDataURL(file);
         },
+        handleFrameChange(e) {
+            const file = e.target.files[0];
+            const reader = new FileReader();
+            reader.onload = () => {
+                const img = new Image();
+                img.src = reader.result;
+                img.onload = () => {
+                    this.frame = img;
+                };
+            };
+            reader.readAsDataURL(file);
+        },
         
+
     }
 }
     
